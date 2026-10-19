@@ -1,60 +1,97 @@
 <!DOCTYPE html>
+
 <html>
+
   <head>
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Image Tracking - MindAR</title>
+
+    <title>Image Tracking - 2 Targets (MindAR)</title>
+
     <!-- Bibliotecas A-Frame e MindAR -->
+
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
+
   </head>
+
   <body>
+
     <a-scene
+
       mindar-image="imageTargetSrc: ./targets.mind;"
+
       color-space="sRGB"
+
       renderer="colorManagement: true, physicallyCorrectLights"
+
       vr-mode-ui="enabled: false"
+
       device-orientation-permission-ui="enabled: false"
+
     >
+
       <a-assets>
-        <!-- Modelo 3D para o Target 0 (Espinossauro) -->
+
+        <!-- Modelo 3D para o Target 0 -->
+
         <a-asset-item 
+
           id="spinosaurusModel" 
+
           src="https://acspt.github.io/A-FRAME/ar/image/detect-spinosaurus-mindar/assets/spinosaurus/scene.gltf">
+
         </a-asset-item>
+
       </a-assets>
+
+
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-      <!-- TARGET 0: Primeira Imagem (Carrega o Espinossauro) -->
+
+
+      <!-- TARGET 0: Primeira Imagem (ex: Dinossauro 3D) -->
+
       <a-entity mindar-image-target="targetIndex: 0">
+
         <a-gltf-model
+
           src="#spinosaurusModel"
+
           position="0 0 0"
+
           scale="0.05 0.05 0.05"
+
           rotation="0 0 0"
+
         ></a-gltf-model>
+
       </a-entity>
 
-      <!-- TARGET 1: Segunda Imagem (Esfera 3D Animada + Texto) -->
+
+
+      <!-- TARGET 1: Segunda Imagem (ex: Caixa/Cubo Azul) -->
+
       <a-entity mindar-image-target="targetIndex: 1">
-        <!-- Esfera 3D a rodar -->
-        <a-sphere 
-          color="#8A2BE2" 
-          radius="0.35" 
-          position="0 0.1 0"
-          material="metalness: 0.3; roughness: 0.2;"
-          animation="property: rotation; to: 0 360 0; loop: true; dur: 4000; easing: linear">
-        </a-sphere>
 
-        <!-- Texto 3D por baixo da esfera -->
-        <a-text 
-          value="Imagem 2 Detetada!" 
-          align="center" 
-          color="#00FFCD" 
-          position="0 -0.4 0" 
-          scale="1.2 1.2 1.2">
-        </a-text>
+        <a-box 
+
+          color="blue" 
+
+          position="0 0 0" 
+
+          scale="0.5 0.5 0.5"
+
+          material="opacity: 0.9;"
+
+        ></a-box>
+
       </a-entity>
+
     </a-scene>
+
   </body>
+
 </html>

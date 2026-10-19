@@ -21,12 +21,6 @@
           id="spinosaurusModel" 
           src="https://acspt.github.io/A-FRAME/ar/image/detect-spinosaurus-mindar/assets/spinosaurus/scene.gltf">
         </a-asset-item>
-
-        <!-- Modelo 3D para o Target 1 (Segundo modelo 3D de exemplo) -->
-        <a-asset-item 
-          id="outroModelo" 
-          src="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF-Binary/Duck.glb">
-        </a-asset-item>
       </a-assets>
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
@@ -41,14 +35,21 @@
         ></a-gltf-model>
       </a-entity>
 
-      <!-- TARGET 1: Segunda Imagem (Carrega o segundo modelo 3D) -->
+      <!-- TARGET 1: Segunda Imagem (Esfera Roxa Animada + Texto 3D) -->
       <a-entity mindar-image-target="targetIndex: 1">
-        <a-gltf-model
-          src="#outroModelo"
-          position="0 -0.2 0"
-          scale="0.2 0.2 0.2"
-          rotation="0 90 0"
-        ></a-gltf-model>
+        <a-sphere 
+          color="#8A2BE2" 
+          radius="0.3" 
+          position="0 0.2 0"
+          animation="property: rotation; to: 0 360 0; loop: true; dur: 4000">
+        </a-sphere>
+        <a-text 
+          value="Target 2 Encontrado!" 
+          align="center" 
+          color="#FFFFFF" 
+          position="0 -0.4 0" 
+          scale="1.5 1.5 1.5">
+        </a-text>
       </a-entity>
     </a-scene>
   </body>

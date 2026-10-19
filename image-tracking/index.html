@@ -16,16 +16,22 @@
       device-orientation-permission-ui="enabled: false"
     >
       <a-assets>
-        <!-- Modelo 3D para o Target 0 -->
+        <!-- Modelo 3D para o Target 0 (Espinossauro) -->
         <a-asset-item 
           id="spinosaurusModel" 
           src="https://acspt.github.io/A-FRAME/ar/image/detect-spinosaurus-mindar/assets/spinosaurus/scene.gltf">
+        </a-asset-item>
+
+        <!-- Modelo 3D para o Target 1 (Segundo modelo 3D de exemplo) -->
+        <a-asset-item 
+          id="outroModelo" 
+          src="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF-Binary/Duck.glb">
         </a-asset-item>
       </a-assets>
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-      <!-- TARGET 0: Primeira Imagem (ex: Dinossauro 3D) -->
+      <!-- TARGET 0: Primeira Imagem (Carrega o Espinossauro) -->
       <a-entity mindar-image-target="targetIndex: 0">
         <a-gltf-model
           src="#spinosaurusModel"
@@ -35,14 +41,14 @@
         ></a-gltf-model>
       </a-entity>
 
-      <!-- TARGET 1: Segunda Imagem (ex: Caixa/Cubo Azul) -->
+      <!-- TARGET 1: Segunda Imagem (Carrega o segundo modelo 3D) -->
       <a-entity mindar-image-target="targetIndex: 1">
-        <a-box 
-          color="blue" 
-          position="0 0 0" 
-          scale="0.5 0.5 0.5"
-          material="opacity: 0.9;"
-        ></a-box>
+        <a-gltf-model
+          src="#outroModelo"
+          position="0 -0.2 0"
+          scale="0.2 0.2 0.2"
+          rotation="0 90 0"
+        ></a-gltf-model>
       </a-entity>
     </a-scene>
   </body>

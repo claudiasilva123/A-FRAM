@@ -26,7 +26,8 @@
     -->
     <a-scene
       vr-mode-ui="enabled: false"
-      arjs="sourceType: webcam; videoTexture: false; debugUIEnabled: false; sourceWidth: 1280; sourceHeight: 960;"
+      renderer="antialias: false; alpha: true; precision: medium"
+      arjs="sourceType: webcam; videoTexture: false; debugUIEnabled: false; sourceWidth: 960; sourceHeight: 720;"
     >
       <!--
         Posição simulada: o utilizador fica sempre nesta localização.
@@ -36,7 +37,7 @@
           gps-camera="maxDistance: 2000"
       -->
       <a-camera
-        gps-camera="simulateLatitude: 51.049; simulateLongitude: -0.723"
+        gps-camera="simulateLatitude: 51.049; simulateLongitude: -0.723; gpsMinDistance: 10; positionMinAccuracy: 50"
         rotation-reader
       ></a-camera>
 

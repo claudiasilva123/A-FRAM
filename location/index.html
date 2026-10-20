@@ -7,41 +7,22 @@
     <style>
       body { margin: 0; overflow: hidden; }
     </style>
-    <!-- A-Frame e AR.js (versão com localização) em versões fixas -->
+    
     <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@ar-js-org/ar.js@3.4.8/aframe/build/aframe-ar.js"></script>
+    
   </head>
   <body>
-    <!--
-      EXPERIMENTAR:
-      1. Abre esta página no telemóvel (precisa de HTTPS, por exemplo GitHub Pages).
-      2. Autoriza a câmara (e a localização, se usares o GPS real).
-      3. Altera as coordenadas, cores, escalas e tipos de entidades abaixo e vê o resultado.
-
-      Referência de distâncias (aproximadas):
-        0.0001 de latitude  ≈ 11 metros
-        0.0010 de latitude  ≈ 111 metros
-      Norte = latitude a aumentar | Sul = latitude a diminuir
-      Este  = longitude a aumentar | Oeste = longitude a diminuir
-    -->
     <a-scene
       vr-mode-ui="enabled: false"
       renderer="antialias: false; alpha: true; precision: medium"
-      arjs="sourceType: webcam; videoTexture: false; debugUIEnabled: false; sourceWidth: 960; sourceHeight: 720;"
-    >
-      <!--
-        Posição simulada: o utilizador fica sempre nesta localização.
-        Para usar o GPS real, apaga simulateLatitude e simulateLongitude:
-          gps-camera
-        Se quiseres ver os objetos a mais de 100 m, aumenta o limite:
-          gps-camera="maxDistance: 2000"
-      -->
+      arjs="sourceType: webcam; videoTexture: false; debugUIEnabled: false; sourceWidth: 960; sourceHeight: 720;">
+      
       <a-camera
         gps-camera="simulateLatitude: 51.049; simulateLongitude: -0.723; gpsMinDistance: 10; positionMinAccuracy: 50"
         rotation-reader
       ></a-camera>
 
-      <!-- 1. TEXTO ~11 m a norte (exemplo original) -->
       <a-text
         value="Ola Mundo!"
         scale="6 6 6"
@@ -50,7 +31,6 @@
         gps-entity-place="latitude: 51.0491; longitude: -0.723;"
       ></a-text>
 
-      <!-- 2. TEXTO ~11 m a sul, com outra cor -->
       <a-text
         value="Sul"
         scale="6 6 6"
@@ -59,7 +39,6 @@
         gps-entity-place="latitude: 51.0489; longitude: -0.723;"
       ></a-text>
 
-      <!-- 3. CAIXA ~11 m a este (longitude + 0.0001 ≈ 7 m neste local) -->
       <a-box
         color="#2196f3"
         scale="3 3 3"
@@ -67,7 +46,6 @@
         gps-entity-place="latitude: 51.049; longitude: -0.7229;"
       ></a-box>
 
-      <!-- 4. ESFERA ~11 m a oeste, mais alta (position y = altura em metros) -->
       <a-sphere
         color="#ff9800"
         radius="2"
@@ -75,7 +53,6 @@
         gps-entity-place="latitude: 51.049; longitude: -0.7231;"
       ></a-sphere>
 
-      <!-- 5. CONE a nordeste, rodado -->
       <a-cone
         color="#9c27b0"
         radius-bottom="1.5"
@@ -84,15 +61,6 @@
         position="0 2 0"
         gps-entity-place="latitude: 51.0491; longitude: -0.7229;"
       ></a-cone>
-
-      <!--
-        IDEIAS PARA EXPERIMENTAR:
-        - Trocar a-box por a-cylinder, a-torus, a-plane, a-image, a-gltf-model
-        - Alterar rotation="0 45 0" para rodar o objeto
-        - Mudar scale e position para ver tamanho e altura
-        - Adicionar animation="property: rotation; to: 0 360 0; loop: true; dur: 4000"
-        - Usar as tuas coordenadas reais (clica com o botão direito no Google Maps > copiar coordenadas)
-      -->
     </a-scene>
   </body>
 </html>

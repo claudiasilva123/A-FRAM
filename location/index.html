@@ -15,11 +15,24 @@
       embedded
       arjs="sourceType: webcam; debugUIEnabled: false;"
     >
+      <!-- Cubo Vermelho -->
       <a-box
         material="color: red;"
         scale="20 20 20"
-        gps-entity-place="latitude: <ADD-YOUR-LATITUDE>; longitude: <ADD-YOUR-LONGITUDE>;"
+        gps-entity-place="latitude: SUAS_COORDENADAS; longitude: SUAS_COORDENADAS;"
       ></a-box>
+
+      <!-- Texto 3D posicionado acima do cubo -->
+      <a-text
+        value="A-FRAME LOCATION"
+        scale="15 15 15"
+        color="#FFFFFF"
+        align="center"
+        position="0 25 0"
+        look-at="[gps-camera]"
+        gps-entity-place="latitude: SUAS_COORDENADAS; longitude: SUAS_COORDENADAS;"
+      ></a-text>
+
       <a-camera gps-camera rotation-reader></a-camera>
     </a-scene>
   </body>

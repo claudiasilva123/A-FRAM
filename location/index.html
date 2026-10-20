@@ -1,42 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt">
   <head>
     <meta charset="utf-8" />
-    <title>A-Frame - Location Based AR</title>
-    <!-- Bibliotecas A-Frame e AR.js para geolocalizacao -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Exemplo A-Frame - AR Baseado em Localização (GPS)</title>
+    
+    <!-- Biblioteca A-Frame -->
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    
+    <!-- Biblioteca AR.js para A-Frame (Suporte a GPS / Location-based) -->
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
   </head>
 
-  <body style="margin: 0; overflow: hidden;">
+  <body style="margin: 0px; overflow: hidden;">
     <a-scene
       vr-mode-ui="enabled: false"
       embedded
       arjs="sourceType: webcam; debugUIEnabled: false;"
     >
-      <!-- Camara do utilizador associada ao GPS do telemovel -->
-      <a-camera gps-camera rotation-reader></a-camera>
-
-      <!-- ENTIDADE 1: Caixa 3D vermelha numa coordenada GPS -->
-      <!-- Substitui a latitude e longitude pelas tuas coordenadas reais -->
+      <!-- 
+        =======================================================================
+        ENTIDADE 1: Cubo Vermelho
+        Substitua latitude e longitude pelas coordenadas de onde você está!
+        =======================================================================
+      -->
       <a-box
-        material="color: red;"
+        material="color: #FF5733; opacity: 0.9;"
         scale="2 2 2"
-        gps-entity-place="latitude: 41.14961; longitude: -8.61099;"
-        look-at="[gps-camera]"
+        position="0 1 0"
+        gps-entity-place="latitude: 41.477888  longitude: -7.177453;"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 4000"
       >
       </a-box>
 
-      <!-- ENTIDADE 2: Texto 3D verde noutra coordenada GPS -->
+      <!-- 
+        =======================================================================
+        ENTIDADE 2: Esfera Azul Flutuante
+        =======================================================================
+      -->
+      <a-sphere
+        material="color: #33A8FF; wireframe: false;"
+        radius="1.5"
+        position="0 3 0"
+        gps-entity-place="latitude: 41.4852; longitude: -7.1812;"
+      >
+      </a-sphere>
+
+      <!-- 
+        =======================================================================
+        ENTIDADE 3: Texto 3D / Mensagem
+        =======================================================================
+      -->
       <a-text
-        value="Objeto RA Aqui!"
-        scale="5 5 5"
+        value="Objeto AR Aqui!"
+        scale="3 3 3"
+        color="#FFFFFF"
         align="center"
-        color="#00FF00"
-        gps-entity-place="latitude: 41.14970; longitude: -8.61080;"
+        position="0 4 0"
         look-at="[gps-camera]"
-      ></a-text>
+        gps-entity-place="latitude: 41.4848; longitude: -7.1808;"
+      >
+      </a-text>
+
+      <!-- Câmera com leitor de GPS da AR.js -->
+      <a-camera gps-camera rotation-reader></a-camera>
     </a-scene>
   </body>
 </html>
